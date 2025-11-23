@@ -1,7 +1,138 @@
-<h1> Ultraw Games Wiki </h1>
-<p>We create wikis.</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ultraw Games Wiki</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap');
+      
+      body {
+        margin: 20px 10vw 0 10vw;
+        font-size: 1.2em;
+        background-color: #ffdcdc;
+        color: #332121;
+        font-family: "Inter", Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 95vh;
+      }
+      
+      .content {
+        text-align: center;
+        display: block;
+        align-self: center;
+      }
+      
+      h1 {
+        font-size: 3em;
+      }
+      
+      large {
+        display: block;
+        font-size: 5em;
+        font-family: "Bona Nova SC", serif;
+        font-weight: bold;
+        margin-top: -20px;
+        transition: text-decoration 0.5s;
+        text-decoration: line-through;
+        text-decoration-color: #fff0;
+      }
+      
+      .strikethrough {
+        text-decoration-color: #332121;
+      }
+      
+      navbutton:hover img {
+        transform: translate(0, -5px);
+        cursor: pointer;
+      }
+      
+      navbutton img {
+        transition: all 0.15s ease;
+      }
+      
+      navbutton {
+        overflow: visible;
+      }
+      
+      line {
+        border-bottom: solid 1px;
+        display: block;
+        width: 50vw;
+      }
+      
+      .hidden {
+        opacity: 0;
+        transform: translate(0, -150px);
+      }
+      
+      #showonanim {
+        transition: all 1s ease;
+      }
+      
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: 0.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <span style="font-weight: bold;"> We create wikis for Roblox 
+        <large id = "changetext" class>Tycoons</large> 
+      </span>
+      <line></line>
+      <div class="hidden" id="showonanim">
+        <p> Check them out: </p>
+        <navbutton>
+          <a href = "https://rt3.ugwiki.org/">
+            <img src="https://static.wikitide.net/rt3wiki/2/26/Favicon.png" width=100/>
+          </a>
+        </navbutton>
+      </div>
+    </div>
+    <footer> 
+        Ultraw Games Wiki is not affilated with Ultraw Games Inc. This page is available under <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+          CC BY-SA 4.0</a>.
+    </footer>
 
-<h2>Our Wikis:</h2>
-<ul>
-  <li><a href="https://rt3.ugwiki.org">Restaurant Tycoon 3 Wiki</a></li>
-</ul>
+    <script>
+      let words = ["Experiences", "Masterpieces"];
+      const text = document.querySelector("#changetext")
+      
+      const showafter = document.querySelector("#showonanim");
+      
+      async function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+      
+      
+      async function main() {
+        for (let i = 0; i < words.length; i++) {
+          await sleep(1000);
+          text.className = "strikethrough";
+          await sleep(1000);
+          text.className = "";
+          await sleep(100);
+          text.textContent = "";
+          
+          let word = words[i]
+          
+          console.log(word.length)
+          for (let x = 0; x < word.length; x++) {
+            text.textContent += word[x];
+            await sleep(100);
+          }
+          text.textContent = word;
+        }
+        
+        showafter.className = "";
+      }
+      
+      main();
+    </script>
+  </body>
+</html>
