@@ -72,3 +72,9 @@ footer {
     left: 10px;
     font-size: 0.6em;
 }
+
+.list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
